@@ -19,6 +19,7 @@ typedef struct{
     PONT first, last;
 }FILA;
 
+void menu();
 void criarPilha(PILHA *pilha);
 void criarFila(FILA *fila);
 int empilhar(PILHA *pilha, ITEM item);

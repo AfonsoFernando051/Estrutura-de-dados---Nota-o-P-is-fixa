@@ -18,11 +18,10 @@ int main(void){
 
     menu();
 
-    printf("\nDigite a operação: \n");
+    printf("\nDigite a operação em notação infixa: \n");
     scanf("%s", operacaoChar);
 
     while(operacaoChar[i] != '\0'){
-
         item.posicao = i;
 
         if(isOperand(operacaoChar[i])){
@@ -33,7 +32,6 @@ int main(void){
             aux = item;
 
             if(!isOperand(item.caracter) && (pre(item.caracter)>pre(operacaoChar[i]))){
-        
                 while(!pilhaVazia(operador)){
                     desempilhar(&operador, &item);
                     aux = item;
@@ -145,14 +143,13 @@ int filaVazia(FILA fila){
 }
 
 void imprimeFila(FILA fila){
-    
     if(filaVazia(fila)){
         printf("\nFila vazia.\n");
     }
 
     PONT aux = fila.first->prox;
 
-    printf("\nOperandos: ");
+    printf("\nNotação Pós-fixa: ");
     while(aux != NULL){
         printf("%c", aux->item.caracter);
         aux = aux->prox;
@@ -206,4 +203,5 @@ int pre(char c){
     if(c == '*' || c == '/'){
         return 2;
     }
+    return -1;
 }
